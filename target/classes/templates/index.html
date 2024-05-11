@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns:th="[http://www.thymeleaf.org](http://www.thymeleaf.org/)">
+
+<head>
+	<title>Password Tracker</title>
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
+	<!-- Author:      Sarah McCrie
+        Program:      index.html
+        Date:         [10-07-2023]
+        Updated:      [10-12-2023] 
+        Version:      1.0     
+        Description:  This is my assignment 2 index page
+    -->
+	<link rel="icon" type="image/x-icon" th:href="@{/images/icon.png/}" />
+</head>
+
+<body>
+	<div class="imageAndHeading">
+		<img class="lockImage" th:src="@{/images/lock.png}" alt="Lock Image" />
+		<h1>Password Tracker</h1>
+	</div>
+	<div class="linkHolder">
+		<a th:href="@{/viewPasswordRecord}">View Password Records</a>
+		<a th:href="@{/searchPasswordRecord}">Search Password Records</a>
+	</div>
+
+	<!-- Form area for entering new password record -->
+	<div class="formarea">
+		<form method="post" action="#" th:action="@{/}"     th:object="${password}">
+
+			<div class="labelAndInput"> <label class="label">ID:</label> <input type="number" th:field="*{id}"
+					class="doNotTouch" readonly min="0" required="required" /> </div>
+			<br>
+
+			<div class="labelAndInput"> <label class="label">Title:</label> <input type="text"
+					placeholder="Please enter title" th:field="*{title}" />
+			</div> <br>
+
+			<div class="labelAndInput"> <label class="label">Username:</label> <input type="text"
+					placeholder="Please enter username" th:field="*{username}" /> </div> <br>
+
+			<div class="labelAndInput"> <label class="label">Password:</label> <input type="text"
+					placeholder="Please enter password" th:field="*{password}" required="required" /> </div> <br>
+
+			<div class="labelAndInput"> <label class="label">URL:</label> <input type="text"
+					placeholder="Please enter website URL" th:field="*{url}" /> </div>
+			<br>
+
+			<div class="labelAndInput"> <label class="label">Email:</label> <input type="email"
+					placeholder="Please enter email" th:field="*{email}" />
+			</div> <br>
+
+			<div class="labelAndInput"> <label class="label">Notes:</label> <input type="text" placeholder="Notes"
+					th:field="*{notes}" />
+			</div> <br>
+
+			<input type="submit" class="addRecordButton" value="Add Record!" id="addRecordButton" />
+
+		</form>
+	</div>
+
+	<!-- if the boolean successfulAdd = true, message will show -->
+	<p class="successfulAdd" th:if="${successfulAdd}">Your record has been added sucessfully!</p>
+
+</body>
+
+</html>
